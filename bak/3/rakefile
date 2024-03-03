@@ -1,0 +1,13 @@
+task :loadfirst do
+   puts "first task"
+
+end
+
+desc 'Задача по умолчанию'
+task default: :load
+task :load do
+puts 'Hello, world!'
+end
+task :load do
+puts 'Hello, Ruby!'
+end

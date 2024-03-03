@@ -1,0 +1,8 @@
+weekdays = %W[monday tuesday wensday thursday friday saturday sunday]
+puts weekdays[0]
+puts weekdays[1,1]
+puts weekdays[2]
+puts weekdays[3...4]
+puts weekdays[-3]
+puts weekdays[-2]
+puts weekdays[-1]

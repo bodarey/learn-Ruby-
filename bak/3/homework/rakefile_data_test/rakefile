@@ -1,0 +1,20 @@
+require 'date'
+class Date
+   def self.my_date_time
+        date = self.today
+	t = Time.now.strftime("%d/%m/%Y   %B ")
+	week_day = DAYNAMES[Time.now.wday]
+	Time.now.strftime("%d/%m/%Y #{week_day}/%B/%Y    %H:%M:%S")
+       
+   end	
+end
+
+
+task default:  :load 
+
+task :load do
+
+     
+   puts Date.my_date_time	
+
+end

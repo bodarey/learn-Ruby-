@@ -1,0 +1,44 @@
+a.inspect # arata detaliile obiectului combinatia dintre puts si inspect este p $ p 'text'
+obj.object_id # indica id-ul obiectului
+obj.class # arata class obiectului
+3.respond_to? 'between?' # true — afiseaza true sau false, daca functia raspunde la obiect
+--------------------------------
+iesirea din ri se face cu q
+ri Integer#round # afiseaza functia din obiect
+----------------
+Zeal # interfata grafica pentru documentatie
+---------------------
+https://ruby-doc.org/core-3.0.0/ # cautare documentatie dupa clase si functii in submeniul core
+-------------------------------------------
+a = 1
+binding.irb      # debuging
+b = 2
+--------------------------------
+gem search rake # cautare gem 
+gem search -l rake # cautare gem in pc local
+gem list -l
+gem uninstall rake #dezinstaare gem
+-------------------------
+situri cu impartirea gemurilor in categorii
+https://awesome-ruby.com/ 
+https://www.ruby-toolbox.com/
+--------------------------------------------
+gem install rubocop  # pentru corectia regulilor nescrise de formatare
+rubocop --help # in mapa cu fisier rubocop -a # autocorection
+--------------------------------------------
+bundle init
+bundle install
+----------------------------------
+puts global_variables # variabilele globale din proiect
+puts local_variables  #variabilele locale din proiect
+$LOAD_PATH # variabila globala care contine calea catre biblioteci
+puts $PROGRAM_NAME # numele procesului
+ps -p | grep irb # ps afiseaza procesele din sistem => grep filtreaza dupa denumire
+p first__class.instance_variables # instance_variables intoarce variabilele de instanta din obiect
+p class_name.class_variables # class_variables intoarce variabilele statice din clasa ex: @@counter => se intoarce un masiv
+---------------------
+a = my_obj.dup # cloneaza partea exterioara a obiectului, adica se formeaza un obiect nou pe alta adresa 
+
+
+
+
