@@ -1,3 +1,9 @@
-# frozen_string_literal: true
 
-puts "number of $LOAD_PATH items in array: #{$LOAD_PATH.size}"
+def my_even(n)
+   a =  (n & 1) 
+   return   a.zero?
+end
+
+
+
+puts my_even(11)
