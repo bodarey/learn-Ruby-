@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Integer
-   def my_pow(n)
-        rez = 1
-	n.times { rez = rez * self } 
-       # puts rez
-	rez
-   end
+  def my_pow(n)
+    rez = 1
+    n.times { rez *= self }
+    # puts rez
+    rez
+  end
 end
 5.my_pow(2)
 
