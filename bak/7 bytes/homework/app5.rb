@@ -21,12 +21,12 @@ def encode(figure, coord, color)
   open_pharan = get_char_to_bytes('(') # delimiter for reference in the code
   close_pharan = get_char_to_bytes(')') # delimiter on right side for reference in the code
   bytes = bytes_figure + open_pharan + bytes_coord + close_pharan + bytes_color
-  bytes.to_i(2) << 7 # shifting the bytes
+  bytes.to_i(2) << 1 # shifting the bytes
 end
 
 def decode(num)
   bytes = num
-  byte = bytes >> 7 # shifting back with 2 bytes
+  byte = bytes >> 1 # shifting back with  bytes
   temp = byte.to_s(2) # making a string of 0 and 1
   temp = "0#{temp}" while temp.size % 8 != 0
   bytes = temp.scan(/......../) # making an array of string  each with length of 8
