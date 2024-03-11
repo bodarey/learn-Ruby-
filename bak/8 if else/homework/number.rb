@@ -2,7 +2,7 @@
 
 def max_integer(arr)
   flag = 1
-  ARGV.each { |item| item&.chars { |ch| flag = nil unless ('1'..'9').include?(ch) } }
+  ARGV.each { |item| item&.chars { |ch| flag = nil unless ('0'..'9').include?(ch) } }
   case arr[0].to_i
   when Integer
     case arr[1].to_i
