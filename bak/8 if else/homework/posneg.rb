@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# method type return the type of the string format depends of the regexp
+# return type of string chars
 def type(str)
   return 'integer' if str.match?(/^(-|\+)[1-9]+$/) || str.match?(/^[1-9]+$/)
 
@@ -11,4 +11,8 @@ def type(str)
   'string'
 end
 
-puts type ARGV.shift
+if type(ARGV[0]) == 'integer' || (type(ARGV[0]) == 'real')
+  ARGV[0][0] == '-' ? (puts 'number is negative') : (puts 'number is positive')
+else
+  puts 'this is not a number'
+end
