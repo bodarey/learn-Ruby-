@@ -11,4 +11,4 @@ def week(n)
   end
   arr
 end
-week(50) {|i| puts i }
+week(50) { |i| puts i }
