@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 class Factory
   @@toys = { teddy_bear: 0, ball: 0, cube: 0 }
   @@total = 0
   def initialize; end
 
-  def self.build(toy) # :teddy_bear, :ball, :cube
+  # :teddy_bear, :ball, :cube
+  def self.build(toy)
     case toy
     when :teddy_bear
       add_item toy = Teddy_bear.new
@@ -29,9 +32,10 @@ class Factory
   def self.offers
     @@toys
   end
- def self.total
+
+  def self.total
     @@total
- end	
+  end
 
   class Teddy_bear
   end
@@ -46,5 +50,5 @@ end
 Factory.build :ball
 Factory.build :cube
 Factory.build :cube
-puts "these are offers from factory:    #{ Factory.offers}"
+puts "these are offers from factory:    #{Factory.offers}"
 puts "was made:    #{Factory.total} toys"
