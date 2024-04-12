@@ -1,31 +1,19 @@
 class Foo
-#@h = {:test => :delta}   
-#def initialize options
-#   @hh = options
-#	create
-#end         
-def initialize options
-@h = options
-#puts options
-#puts @h.size
-   a
+  def initialize(options)
+    @h = options
+    make_methods
+  end
 
-end
- def a
+  def make_methods
+    @h.each do |key, _value|
+      key = key.class == 'Symbol' ? key : key.to_sym
 
-@h.each do |key,value|
-   key = (key.class == 'Symbol')? key : key.to_sym
-  # puts key
-   def method_missing key
-   @h[key] || @h[key.to_s]
-    #value
- #   puts @h
-   end
-end
+      def method_missing(key)
+        @h[key] || @h[key.to_s]
+      end
     end
-
-
+  end
 end
-x ={test2: :delta, test1: :beta}
-f = Foo.new  x
+x = { test2: :delta, test1: :beta }
+f = Foo.new x
 puts f.test1
