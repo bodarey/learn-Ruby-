@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Vessel
   attr_accessor :rockets, :torpeds, :cargo_hold, :crane
 
@@ -15,18 +17,12 @@ end
 
 ###################################
 class Underwater < Vessel
-  def initialize(options)
-    super options
-  end
 end
 
 ###################################
 class OnWater < Vessel
-  def initialize(options)
-    super options
-  end
 end
-atom_submarine = Underwater.new rockets:10, torpeds:9
+atom_submarine = Underwater.new rockets: 10, torpeds: 9
 dry_cargo_grain = OnWater.new cargo_hold: 1, creane: 1
 container_transporter =  OnWater.new crane: 1
 oil_tanker = OnWater.new cargo_hold: 2
@@ -39,6 +35,4 @@ puts oil_tanker
 puts rocket_cruiser
 puts military_transport
 
-
-
-#puts u
+# puts u
