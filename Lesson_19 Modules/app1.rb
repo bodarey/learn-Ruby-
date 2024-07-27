@@ -5,7 +5,7 @@ class Vector
   end
 
   def distance
-    Math.sqrt( ((@b.x - @a.x).pow(2)) + ((@b.y - @a.y).pow(2)))
+    Math.sqrt((@b.x - @a.x).pow(2) + (@b.y - @a.y).pow(2))
   end
 
   class Point
