@@ -1,4 +1,5 @@
 class Unit
+attr_accessor :employees
   def initialize(team = '')
     @team = team
     @employees = []
@@ -43,19 +44,34 @@ class Unit
 end
 
 unit = Unit.new 'team'
-e1 = Unit::Employee.new 'Margarete', 'Tacher', 'front_end'
+e1 = Unit::Employee.new 'Jhon', 'Taylor', 'Manager'
+e2 = Unit::Employee.new 'Marie', 'Smith', 'front-end'
+e3 = Unit::Employee.new 'Paul', 'Carter', 'front-end'
+e4 = Unit::Employee.new 'Dave', 'Crew', 'back-end'
+e5 = Unit::Employee.new 'Poline', 'greck', 'back-end'
+e6 = Unit::Employee.new 'Susane', 'kelbourne', 'designer'
+e7 = Unit::Employee.new 'Dan', 'McGregpr', 'tester'
+
 unit.add_employee e1
-
-e2 = Unit::Employee.new 'Andy', 'Murray', 'back-end'
 unit.add_employee e2
+unit.add_employee e3
+unit.add_employee e4
+unit.add_employee e5
+unit.add_employee e6
+unit.add_employee e7
 
-p unit
-puts '==============='
-# unit.delete_employee e
-# p unit
-unit.edit_employee e1, { name: 'Andy', family: 'Murray' }
-p unit.sort_employees
+p unit.employees
+puts '---------------------'
+p unit.select_by_position 'front-end'
 
-puts '--------------------'
 
-p unit.select_by_position 'front_end'
+
+
+
+
+
+
+
+
+
+                                     
