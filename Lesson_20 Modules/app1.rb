@@ -1,19 +1,17 @@
 class Seo
-attr_accessor :title, :description, :keywords
+  attr_accessor :title, :description, :keywords
 
-def initialize title = 'title',description = 'description', keywords = 'keywords'
-@title = title
-@description = description
-@keywords =  keywords
+  def initialize(title = 'title', description = 'description', keywords = 'keywords')
+    @title = title
+    @description = description
+    @keywords =  keywords
+  end
 end
 
+class News < Seo
 end
 
-class News   < Seo
- 
-end
-
-class About  < Seo
+class About < Seo
 end
 
 n = News.new
