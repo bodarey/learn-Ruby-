@@ -38,7 +38,7 @@ class Integer
    include  RomanNumbers
 end
 
-puts 101.roman
+puts 1024.roman
 
 
 
