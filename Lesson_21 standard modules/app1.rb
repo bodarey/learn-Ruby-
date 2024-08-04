@@ -37,6 +37,6 @@ u2 = User.new 'Dave', 'McDonald'
 g = Group.new
 g.add_user u1
 g.add_user u2
-p g.show_users.map{|x| x.name}
+p(g.show_users.map { |x| x.name })
 puts '---------------'
-g.each{|x| puts x.family}
+g.each { |x| puts x.family }
