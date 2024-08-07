@@ -1,5 +1,6 @@
 class News
-attr_accessor :name, :body, :time
+  attr_accessor :name, :body, :time
+
   include Comparable
   def initialize(name, body, time = Time.new)
     @name = name
