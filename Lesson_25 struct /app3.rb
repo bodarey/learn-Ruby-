@@ -1,7 +1,10 @@
-n = 20
-m = 20
+n = 8
+m = 8
 a = Array.new(n) { Array.new(m) }
 @count = 0
+Queen = Struct.new(:x,:y)
+Q = Queen.new 1,0
+
 ##############################################################
 def print_table(a)
   puts '   a  b  c  d  e  f  g  h'
