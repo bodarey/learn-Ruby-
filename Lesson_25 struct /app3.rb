@@ -2,8 +2,8 @@ n = 8
 m = 8
 a = Array.new(n) { Array.new(m) }
 @count = 0
-Queen = Struct.new(:x,:y)
-Q = Queen.new 1,0
+Queen = Struct.new(:x, :y)
+Q = Queen.new 1, 0
 
 ##############################################################
 def print_table(a)
