@@ -1,5 +1,16 @@
+class Ship
+def initialize x, y, sizze, position
+puts Table.a.inspect
+end
+
+
+end
+
+
+##############################
 class Table
-attr_accessor :a
+  attr_accessor :a
+
   @@n = 10
   @@m = 10
   def  initialize
@@ -7,14 +18,12 @@ attr_accessor :a
     @m = @@m + 2
     @a = Array.new(@n) { Array.new(@m) }
     i = 0
-        while i < @n 
-        j = 0
-
-       while j < @m
-       a[i][j] = '.'
-      @a[i][j] = '*' if (i == 0 || j == @n-1 || i == @m-1 || j== 0)
-     # @a[i][j] = 'x' if ()
-      j += 1
+    while i < @n
+      j = 0
+      while j < @m
+        a[i][j] = '.'
+        @a[i][j] = '*' if i == 0 || j == @n - 1 || i == @m - 1 || j == 0
+        j += 1
       end
       i += 1
     end
@@ -22,21 +31,28 @@ attr_accessor :a
 
   def show_matrix
     i = 0
-    puts "     A B C D E F G H I J"
-    while i < @n 
-        j = 0
-      (i == 0 or i == @n-1) ? (print "   ") : (print "#{i} ".ljust(3) )
+    puts '     A B C D E F G H I J'
+    while i < @n
+      j = 0
+      (i == 0 or i == @n - 1) ? (print '   ') : (print "#{i} ".ljust(3))
       while j < @m
-      print "#{@a[i][j]} " 
-            j += 1
+        print "#{@a[i][j]} "
+        j += 1
       end
-
       i += 1
-  puts
+      puts
     end
-   
   end
+
+
+
+
+
+
+
 end
+###########################################3
 t = Table.new
 t.show_matrix
-#puts t.a.inspect
+Table::Ship.new 1,1,1,1
+
