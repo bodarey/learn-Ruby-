@@ -9,22 +9,23 @@ class Ship
     @m = 10
     # arr[1][3]= 0
     if position == :o
-    i =y
-    #while i <= (y+(sizze-1)) 
+      i = y
+      # while i <= (y+(sizze-1))
       y.upto(y + (sizze - 1)) do |i|
-puts "--#{i}---------"
+        # puts "--#{x}-#{y}-#{sizze}-------"
         # puts arr[x][i].inspect
         # checking on horizontal line from left to right
         if (arr[x][i] != @condition) || (x == 1 ? false : arr[x - 1][i] != @condition) || (x == 10 ? false : arr[x + 1][i] != @condition)
           return false
         end
-      i+=1
+
+        i += 1
       end
       # checking the left and right side of the ship
 
       if (y == 1 ? false : (arr[x][y - 1] != @condition)) || (y + sizze == @n + 1 ? false : arr[x][y + sizze] != @condition)
-       return false
-     end
+        return false
+      end
       # checking top left corner
       return false if x == 1 && y == 1 && arr[x + 1][y + sizze] != @condition
 
@@ -35,22 +36,38 @@ puts "--#{i}---------"
       # checking right bottom corner
       return false if x > 1 and y > 1 && (x == @m && (y + sizze - 1 > @n or arr[x - 1][y - 1] != @condition))
 
-      if y > 1 && y+sizze<@n && (x == 1 && arr[x + 1][y + sizze] != @condition or arr[x + 1][y - 1] != @condition)
+      if y > 1 && y + sizze < @n && (x == 1 && (arr[x + 1][y + sizze] != @condition or arr[x + 1][y - 1] != @condition))
         # ship is on the top checking intersection corners on right and left bottom
         return false
       end
       # ship is on the bottom checking intersection on left and right top
-      if x > 1 and  y+sizze < @m and y > 1 && (x == @n && arr[x - 1][y - 1] != @condition or arr[x - 1][y + sizze] != @condition)
+      if x > 1 and y + sizze < @m and y > 1 && (x == @n && (arr[x - 1][y - 1] != @condition or arr[x - 1][y + sizze] != @condition))
         return false
       end
       # ship is on the left checking the intersection right top and bottom
-      return false if x > 1 && x<@n && (y == 1 && arr[x - 1][y + sizze] != @condition or arr[x + 1][y + sizze] != @condition)
+      if x > 1 && x < @n && (y == 1 && (arr[x - 1][y + sizze] != @condition or arr[x + 1][y + sizze] != @condition))
+        return false
+      end
       # ship is on the right checking intersection top left
-      return false if x > 1 and y > 1 && (y == @m && arr[x - 1][y - 1] != @condition)
+      return false if x > 1 and y > 1 && (y+sizze-1 == @m && arr[x - 1][y - 1] != @condition)
       # ship is on the right checking intersection bottom left
-      return false if y > 1 && x<@n && (y == @m && arr[x + 1][y - 1] != @condition)
+      return false if y > 1 && x < @n && (y+sizze-1 == @m && arr[x + 1][y - 1] != @condition)
       # checking around the ship on intersection when ship is not on margins
-      if x > 1 and y > 1 && x<@n && (arr[x - 1][y - 1] != @condition or arr[x + 1][y - 1] != @condition or arr[x - 1][y + sizze] != @condition or arr[x + 1][y + sizze] != @condition)
+#puts '-----------------'
+#      puts   x>1
+#puts y > 1
+#puts x < @n && y + sizze <= @m
+#puts arr[x - 1][y - 1] != @condition
+#puts arr[x + 1][y - 1] != @condition
+#puts arr[x - 1][y + sizze] != @condition 
+#puts  arr[x + 1][y + sizze] != @condition
+#puts '------------------'
+
+
+
+
+
+      if x > 1 and y > 1 && x < @n && y + sizze <= @m && (arr[x - 1][y - 1] != @condition or arr[x + 1][y - 1] != @condition or arr[x - 1][y + sizze] != @condition or arr[x + 1][y + sizze] != @condition)
         return false
       end
 
@@ -119,11 +136,21 @@ end
 # ##########################################3
 t = Table.new
 t.show_matrix
-t.a = Ship.create t.a, 1, 1, 1, :o
-t.a = Ship.create t.a, 1, 10, 1, :o
-t.a = Ship.create t.a, 10, 1, 1, :o
-t.a = Ship.create t.a, 10, 10, 1, :o
- t.a = Ship.create t.a,4,8,2,:o
+
+1.upto(50) do |_k|
+  x = rand(1..10)
+  y = rand(1..10)
+  dim = rand(1..4)
+  puts "_#{x}__#{y}__#{dim}_____"                                            
+  Ship.create t.a, x, y, dim, :o if Ship.create t.a, x, y, dim, :o != false
+end
+ # Ship.create t.a, 5, 7, 2, :o
+ # Ship.create t.a, 6, 5, 2, :o
+# t.a = Ship.create t.a, 10, 8, 3, :o
+
+# t.a = Ship.create t.a,4,8,2,:o
+# t.a = Ship.create t.a, 5, 8, 1, :o
+# t.a = Ship.create t.a, 6, 10, 1, :o
 
 t.show_matrix
 
