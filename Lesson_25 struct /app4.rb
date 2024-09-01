@@ -75,7 +75,69 @@ class Ship
         arr[x][j] = 'X'
       end
 
+#######################################################################
     elsif position == :v
+
+
+
+i = y
+      # while i <= (y+(sizze-1))
+      x.upto(x + (sizze - 1)) do |i|
+        # puts "--#{x}-#{y}-#{sizze}-------"
+        # puts arr[x][i].inspect
+        # checking on horizontal line from top to bottom
+        if (arr[i][y] != @condition) || (y == 1 ? false : arr[i][y-1] != @condition) || (y == 10 ? false : arr[i][y+1] != @condition)
+          return false
+        end
+
+        i += 1
+      end
+      # checking the top and bottom side of the ship
+
+      if (x == 1 ? false : (arr[x-1][y ] != @condition)) || (x + sizze == @n + 1 ? false : arr[x+sizze][y] != @condition)
+        return false
+      end
+
+      # checking top left corner
+      return false if x == 1 && y == 1 && arr[x + sizze][y + 1] != @condition
+  
+      # checking the right top corner
+      return false if y == @m && (x == 1 && arr[x+sizze][y -1] != @condition)
+      # checking left botom corner
+
+      return false if x == @m && y == 1 && arr[x - sizze][y + 1] != @condition
+      # checking right bottom corner
+
+      return false if  y == @m && x + sizze - 1 == @n and arr[x - 1][y - 1] != @condition
+
+
+      if (y > 1 && y < @m && x == 1 && (arr[x + sizze][y + 1] != @condition or arr[x +sizze][y - 1] != @condition))
+        # ship is on the top checking intersection corners on right and left bottom
+        return false
+      end
+      # ship is on the bottom checking intersection on left and right top
+      if y > 1 && y<@m and x + sizze-1 == @n &&  ( (arr[x - 1][y - 1] != @condition or arr[x - 1][y + 1] != @condition))
+        return false
+     end
+      # ship is on the left checking the intersection right top and bottom
+      if x > 1 && x+sizze-1 < @n && (y == 1 && (arr[x - 1][y + 1] != @condition or arr[x + sizze][y + 1] != @condition))
+        return false
+      end
+      # ship is on the right checking intersection top left  and bottom
+      return false if (x > 1 && x+sizze-1<@n && y == @m  && (arr[x - 1][y - 1] != @condition or arr[x+sizze][y-1] != @condition))
+
+
+
+      if x > 1 and y > 1 && y < @n && x + sizze <= @n && (arr[x - 1][y - 1] != @condition or arr[x - 1][y + 1] != @condition or arr[x +sizze][y -1] != @condition or arr[x + sizze][y + 1] != @condition)
+        return false
+      end
+
+      x.upto(x + sizze - 1) do |i|
+        arr[i][y] = 'X'
+      end
+#####################################################
+
+
 
     end
 
@@ -136,22 +198,16 @@ end
 # ##########################################3
 t = Table.new
 t.show_matrix
-
 1.upto(50) do |_k|
   x = rand(1..10)
   y = rand(1..10)
   dim = rand(1..4)
   puts "_#{x}__#{y}__#{dim}_____"                                            
-  Ship.create t.a, x, y, dim, :o if Ship.create t.a, x, y, dim, :o != false
+  Ship.create t.a, x, y, dim, :v if Ship.create t.a, x, y, dim, :v != false
 end
- # Ship.create t.a, 5, 7, 2, :o
- # Ship.create t.a, 6, 5, 2, :o
-# t.a = Ship.create t.a, 10, 8, 3, :o
 
-# t.a = Ship.create t.a,4,8,2,:o
-# t.a = Ship.create t.a, 5, 8, 1, :o
-# t.a = Ship.create t.a, 6, 10, 1, :o
 
+                                                         
 t.show_matrix
 
 # puts t.a.size
