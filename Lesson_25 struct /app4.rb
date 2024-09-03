@@ -7,13 +7,9 @@ class Ship
     @condition = '.'
     @n = 10
     @m = 10
-    # arr[1][3]= 0
     if position == :o
       i = y
-      # while i <= (y+(sizze-1))
       y.upto(y + (sizze - 1)) do |i|
-        # puts "--#{x}-#{y}-#{sizze}-------"
-        # puts arr[x][i].inspect
         # checking on horizontal line from left to right
         if (arr[x][i] != @condition) || (x == 1 ? false : arr[x - 1][i] != @condition) || (x == 10 ? false : arr[x + 1][i] != @condition)
           return false
@@ -53,15 +49,6 @@ class Ship
       # ship is on the right checking intersection bottom left
       return false if y > 1 && x < @n && (y + sizze - 1 == @m && arr[x + 1][y - 1] != @condition)
       # checking around the ship on intersection when ship is not on margins
-      # puts '-----------------'
-      #      puts   x>1
-      # puts y > 1
-      # puts x < @n && y + sizze <= @m
-      # puts arr[x - 1][y - 1] != @condition
-      # puts arr[x + 1][y - 1] != @condition
-      # puts arr[x - 1][y + sizze] != @condition
-      # puts  arr[x + 1][y + sizze] != @condition
-      # puts '------------------'
 
       if x > 1 and y > 1 && x < @n && y + sizze <= @m && (arr[x - 1][y - 1] != @condition or arr[x + 1][y - 1] != @condition or arr[x - 1][y + sizze] != @condition or arr[x + 1][y + sizze] != @condition)
         return false
@@ -73,13 +60,8 @@ class Ship
 
     #######################################################################
     elsif position == :v
-
       i = y
-      # while i <= (y+(sizze-1))
       x.upto(x + (sizze - 1)) do |i|
-        # puts "--#{x}-#{y}-#{sizze}-------"
-        # puts arr[x][i].inspect
-        # checking on horizontal line from top to bottom
         if (arr[i][y] != @condition) || (y == 1 ? false : arr[i][y - 1] != @condition) || (y == 10 ? false : arr[i][y + 1] != @condition)
           return false
         end
@@ -147,6 +129,12 @@ class Table
   def  initialize
     @n = @@n + 2
     @m = @@m + 2
+    new_table
+  end
+
+  private
+
+  def new_table
     @a = Array.new(@n) { Array.new(@m) }
     i = 0
     while i < @n
@@ -160,10 +148,15 @@ class Table
     end
   end
 
+  public
+
   def show_matrix
     if @a == false
       puts '----false---'
       return false
+    end
+    loop do
+      break if show_ships
     end
 
     i = 0
@@ -180,29 +173,41 @@ class Table
     end
   end
 
-  def self.get_a; end
+  def show_ships
+    variant = proc {
+      option = %i[o v]
+      op = option[rand(0..1)]
+    }
+    place_ship = lambda { |ship|
+      k = 0
+      1.upto(ship[0]) do
+        k += 1 if Ship.create @a, rand(1..10), rand(1..10), ship[1], variant.call
+      end
+      return true if k == ship[0]
 
-  def self.set_a(a)
-    @a = a
+      false
+    }
+
+    ship1 = [1, 4]
+    ship2 = [2, 3]
+    ship3 = [3, 2]
+    ship4 = [4, 1]
+
+    1.upto(5000) do |_i|
+      if (place_ship.call ship1) and (place_ship.call ship2) and (place_ship.call ship3) and (place_ship.call ship4)
+
+        return true
+      end
+
+      new_table
+    end
+    false
   end
 end
 # ##########################################3
 t = Table.new
+# t.show_matrix
+
+# t.show_matrix
 t.show_matrix
-
-1.upto(50) do |_k|
-  x = rand(1..10)
-  y = rand(1..10)
-  dim = rand(1..4)
-  variant = %i[o v]
-  op = variant[rand(0..1)]
-  #  puts "_#{x}__#{y}__#{dim}_____"
-  Ship.create t.a, x, y, dim, op if Ship.create t.a, x, y, dim, op != false
-end
-
-# Ship.create t.a, 1, 7, 2,:o
-# Ship.create t.a, 2, 4, 3,:o
-
-t.show_matrix
-
 # puts t.a.size
