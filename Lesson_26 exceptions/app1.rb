@@ -3,7 +3,9 @@ end
 
 class User
   def initialize(first_name, last_name, email)
-    raise UserException.new(' name and/or email are incorect') unless (first_name.match(/[a-zA-Z]/) and last_name.match(/[a-zA-Z]/) and email.match(/@.+\./) )
+    return if first_name.match(/[a-zA-Z]/) and last_name.match(/[a-zA-Z]/) and email.match(/@.+\./)
+
+    raise UserException.new(' name and/or email are incorect')
   end
 end
 
