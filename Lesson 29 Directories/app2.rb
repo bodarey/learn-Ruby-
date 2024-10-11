@@ -1,0 +1,1 @@
+list = Dir['*jpeg','*jpg','*png','*gif','*svg']
