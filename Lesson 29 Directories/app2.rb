@@ -1,6 +1,3 @@
-list = -> { Dir['*jpeg','*jpg','*png','*gif','*svg'].sample }
+list = -> { Dir['*jpeg', '*jpg', '*png', '*gif', '*svg'].sample }
 
 puts list.call
-
-
-
