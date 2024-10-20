@@ -1,9 +1,9 @@
 def rows_in_files(path = Dir.pwd, ext = '.rb')
-  $count = 0                                                 
+  $count = 0
   def get_files(path, ext)
     Dir.chdir path
-    #list = Dir['*'].select { |x| x.include? ext }
-    list = Dir.entries(path).select{|x| File.extname(x) == ext }
+    # list = Dir['*'].select { |x| x.include? ext }
+    list = Dir.entries(path).select { |x| File.extname(x) == ext }
     list.each do |l|
       File.open(l) do |f|
         until f.eof?
